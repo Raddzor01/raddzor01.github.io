@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I love you<3</title>
+  <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          font-family: Arial, sans-serif;
+          margin: 0;
+          background-color: pink;
+      }
+      img {
+          display: none;
+          width: 450px;
+          height: 400px;
+      }
+      button {
+          margin: 10px;
+          padding: 10px 20px;
+          font-size: 24px;
+          cursor: pointer;
+          border: none;
+          border-radius: 5px;
+      }
+      #yesButton {
+          background-color: green;
+          color: white;
+      }
+      #noButton {
+          background-color: red;
+          color: white;
+      }
+      #loveText {
+          display: none;
+          font-size: 32px;
+          color: black;
+          margin: 20px;
+      }
+  </style>
+</head>
+<body>
+<h1>Хочешь увидеть валентинку?</h1>
+<button id="yesButton">Да</button>
+<button id="noButton">Нет</button>
+<div id="loveText">Люблю тебя, моя дорогая Ника. <br> Каждый миг с тобой в радость♥</div>
+<img id="coolImage" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/myaowl/sticker_21.gif?e43b81060393e9f70c65251330bde6be" />
+
+<script>
+	const yesButton = document.getElementById('yesButton');
+	const noButton  = document.getElementById('noButton');
+	const coolImage = document.getElementById('coolImage');
+	const loveText = document.getElementById('loveText');
+
+	let noButtonClickCount = 0;
+
+	yesButton.addEventListener('click', () => {
+		document.querySelector('h1').style.display = 'none';
+		yesButton.style.display = 'none';
+		noButton.style.display = 'none';
+		loveText.style.display = 'block';
+		coolImage.style.display = 'block';
+	});
+
+	// Обработка нажатия кнопки "Нет"
+	noButton.addEventListener('click', () => {
+		noButtonClickCount++;
+
+		const buttonWidth = noButton.offsetWidth;
+		const buttonHeight = noButton.offsetHeight;
+
+		const maxX = window.innerWidth - buttonWidth;
+		const maxY = window.innerHeight - buttonHeight;
+
+		// Генерируем случайные координаты
+		const randomX = Math.floor(Math.random() * maxX);
+		const randomY = Math.floor(Math.random() * maxY);
+
+		noButton.style.position = 'absolute';
+		noButton.style.left = `${randomX}px`;
+		noButton.style.top = `${randomY}px`;
+		yesButton.style.transform = `scale(${1 + noButtonClickCount})`;
+
+		if (noButtonClickCount === 5) {
+			yesButton.style.position = 'fixed';
+			yesButton.style.top = '0';
+			yesButton.style.left = '0';
+			yesButton.style.width = '100%';
+			yesButton.style.height = '100%';
+
+			noButton.style.display = 'none';
+		}
+	});
+</script>
+</body>
+</html>
