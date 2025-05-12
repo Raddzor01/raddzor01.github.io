@@ -1,4 +1,4 @@
-name: Build and Realis
+name: Build and Deploy
 
 on:
   push:
