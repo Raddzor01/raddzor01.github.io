@@ -11,7 +11,9 @@ export default function App() {
     const date = new Date();
 
     useEffect(() => {
-        setValid(true);
+        if (date.getDate() === 13) {
+            setValid(true);
+        } else setValid(false);
     }, [date]);
 
     return (
@@ -23,10 +25,10 @@ export default function App() {
                         {step === 1 && (
                             <div>
                                 <h3 style={{ margin: "100px 0 20px" }}>
-                                    Today is all about you, GB
+                                    Today is all about you, girl
                                 </h3>
                                 <button className="button" onClick={() => setStep(1.5)}>
-                                    Proceed...
+                                    Продолжить...
                                 </button>
                             </div>
                         )}
@@ -34,22 +36,23 @@ export default function App() {
                             <div>
                                 <div style={{ margin: "100px 0 25px" }}>
                                     <p>
-                                        What do you call me when I call you <b>Bear</b>
+                                        Сейчас узнаем, с кем мы имеем дело<br />
+                                        Как зовут твоих котиков?
                                     </p>
                                 </div>
 
                                 <input
-                                    placeholder="Enter answer here"
-                                    type="password"
+                                    placeholder="Введи ответ сюда"
+                                    type="text"
                                     onChange={(e) => setPassphrase(e.target.value)}
                                 />
                                 <button
                                     className="button"
-                                    disabled={passPhrase !== "Worm"}
+                                    disabled={(passPhrase !== "Йоша и Муся") && (passPhrase !== "Муся и Йоша")}
                                     onClick={() => setStep(2)}
-                                    style={{ opacity: passPhrase !== "Worm" ? 0.5 : 1 }}
+                                    style={{ opacity: (passPhrase !== "Йоша и Муся") && (passPhrase !== "Муся и Йоша") ? 0.5 : 1 }}
                                 >
-                                    Submit
+                                    Продолжить
                                 </button>
                                 <center
                                     style={{
@@ -58,7 +61,7 @@ export default function App() {
                                         color: "#3d3d3d",
                                     }}
                                 >
-                                    The answer should be case sensitive
+                                    С большой буквы и через союз "и"
                                 </center>
                                 <center
                                     style={{
@@ -67,11 +70,94 @@ export default function App() {
                                         color: "#3d3d3d",
                                     }}
                                 >
-                                    <b>Hint:</b> 4 letters and all in uppercase
+                                    <b>Подсказка:</b> 2 кошки, каждая по 4 буквы
                                 </center>
                             </div>
                         )}
-                        {step === 2 && (
+                        { step === 2 && (
+                            <div>
+                                <div style={{ margin: "100px 0 25px" }}>
+                                    <p>
+                                        Как зовут котика, у которого сегодня день рождения?
+                                    </p>
+                                </div>
+
+                                <input
+                                    placeholder="Введи ответ сюда"
+                                    type="text"
+                                    onChange={(e) => setPassphrase(e.target.value)}
+                                />
+                                <button
+                                    className="button"
+                                    disabled={(passPhrase !== "Солнце") && (passPhrase !== "Ника")}
+                                    onClick={() => setStep(3)}
+                                    style={{ opacity: (passPhrase !== "Солнце") && (passPhrase !== "Ника") ? 0.5 : 1 }}
+                                >
+                                    Продолжить
+                                </button>
+                                <center
+                                    style={{
+                                        fontSize: "12px",
+                                        marginTop: "10px",
+                                        color: "#3d3d3d",
+                                    }}
+                                >
+                                    С БОЛЬШОЙ БУКВЫ ЛЮБИМКУ УГУ??
+                                </center>
+                                <center
+                                    style={{
+                                        fontSize: "12px",
+                                        marginTop: "10px",
+                                        color: "#3d3d3d",
+                                    }}
+                                >
+                                    <b>Подсказка:</b> Еще правильным ответом будет звезда, что светит нам днем
+                                </center>
+                            </div>
+                        )}
+                        { step === 3 && (
+                            <div>
+                                <div style={{ margin: "100px 0 25px" }}>
+                                    <p>
+                                        И последнее, как ты называла меня, когда мы только начали встречаться?
+                                    </p>
+                                </div>
+
+                                <input
+                                    placeholder="Введи ответ сюда"
+                                    type="text"
+                                    onChange={(e) => setPassphrase(e.target.value)}
+                                />
+                                <button
+                                    className="button"
+                                    disabled={passPhrase !== ("Дединсайд")}
+                                    onClick={() => setStep(4)}
+                                    style={{ opacity: passPhrase !== "Дединсайд" ? 0.5 : 1 }}
+                                >
+                                    Продолжить
+                                </button>
+                                <center
+                                    style={{
+                                        fontSize: "12px",
+                                        marginTop: "10px",
+                                        color: "#3d3d3d",
+                                    }}
+                                >
+                                    Без пробелов и с большой буквы
+                                </center>
+                                <center
+                                    style={{
+                                        fontSize: "12px",
+                                        marginTop: "10px",
+                                        color: "#3d3d3d",
+                                    }}
+                                >
+                                    <b>Подсказка:</b> IS THAT TOKIO GHOUL REFERENCE???
+                                    и еще нефорыыыы
+                                </center>
+                            </div>
+                        )}
+                        {step === 4 && (
                             <div>
                                 <Confetti
                                     width={window.innerWidth}
@@ -89,31 +175,31 @@ export default function App() {
                                     }}
                                 >
                                     <h2 style={{ fontSize: "20px" }}>
-                                        Happy Birthday, Gummy Bear
+                                        Happy Birthday, Gummybear
                                     </h2>
                                     <span>
-                    From the deepest part of my heart, I'm wishing you the best
-                    years ahead. I pray Allah keeps coming through for you like
-                    you always showup for your family and loved ones...
+                    I pray Allah keeps coming through for you like
+                    you always showup for your loved ones...
                   </span>
-                                    <p class>Many happy returns, baby</p>
+                                    <br /><br />
+                                    <span>
+                                        Ну а если серьезно, то от всего сердца желаю провести вместе все лучшие и не очень
+                                        моменты, ведь они буду всегда приятными, ведь рядом будешь ты. Ты прямо сейчас являешься лучше версией себя и никакая тревога не изменит этого.
+                                        С празднком, любимая, и до скорейшей нашей встречи. Все лучшее - впереди, хихи.
+                                    </span>
+                                    <p class>Вечно твой, любимая</p>
                                     <div>
                                         <button
                                             onClick={() => setStep(1)}
                                             style={{ marginTop: "20px" }}
                                         >
-                                            Close
+                                            Вернуться
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         )}
 
-                        {step === 2 && (
-                            <p style={{ color: "#333" }}>
-                                Welcome to another chapter of greatness
-                            </p>
-                        )}
                     </div>
                 )}
             </div>
