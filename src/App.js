@@ -11,9 +11,7 @@ export default function App() {
     const date = new Date();
 
     useEffect(() => {
-        if (date.getDate() === 13) {
-            setValid(true);
-        } else setValid(false);
+        setValid(true);
     }, [date]);
 
     return (
